@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Application</string>
     <string name="convertBtn" />
+    <string name="choosemap">Choose Map</string>
+    <string name="changeLocation">Change Location</string>
+    <string name="setdefaults">Set Defaults</string>
 </resources>
