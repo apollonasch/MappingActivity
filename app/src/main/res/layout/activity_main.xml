@@ -3,18 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
-    <EditText
+    <org.osmdroid.views.MapView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:id="@+id/et1"
+        android:layout_height="match_parent"
+        android:enabled="true"
+        android:clickable="true"
+        android:id="@+id/map1"
+        tilesource="Mapnik"
         />
-
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:id="@+id/btn1" android:text="@string/convertBtn" />
-
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:id="@+id/tv1"/>
-
 </LinearLayout>

@@ -1,30 +1,39 @@
 package com.example.apollonas.application;
 
 import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.view.View.OnClickListener;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.EditText;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
 
-public class FeetToMetresActivity extends AppCompatActivity implements OnClickListener {
+public class MainActivity extends AppCompatActivity
+{
+
+    MapView mv;
+
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button b = (Button)findViewById(R.id.btn1);
-        b.setOnClickListener(this);
-    }
-
-    public void onClick(View view)
+    public void onCreate(Bundle savedInstanceState)
     {
-        TextView tv = (TextView)findViewById(R.id.tv1);
-        EditText et = (EditText)findViewById(R.id.et1);
-        double feet = Double.parseDouble(et.getText().toString());
-        double metres = feet*0.305;
-        tv.setText("In metres that is: " + metres);
+
+        super.onCreate(savedInstanceState);
+
+        // This line sets the user agent, a requirement to download OSM maps
+        Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
+
+        setContentView(R.layout.activity_main);
+
+        mv = (MapView)findViewById(R.id.map1);
+
+        mv.setBuiltInZoomControls(true);
+        mv.getController().setZoom(16);
+        mv.getController().setCenter(new GeoPoint(51.05,-0.72));
     }
 }
